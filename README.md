@@ -35,3 +35,72 @@ Develop a program in x86-64 assembly language, specifically in 64-bit mode, to a
 - Consider edge cases in user input to enhance the robustness of your program.
 - Follow the provided grading rubric to maximize your score.
 
+## Deployment
+
+To deploy the x86-64 assembly program, follow the steps outlined below:
+
+### Prerequisites
+
+Ensure that you have the following prerequisites installed on your system:
+
+1. **Assembler and Linker:** Install the required assembler and linker tools compatible with x86-64 assembly language. Common choices include NASM (Netwide Assembler) and LD (GNU Linker).
+
+2. **GCC:** A C compiler such as GCC should be available for linking with the C library functions (e.g., scanf, printf).
+
+### Deployment Steps
+
+1. **Save the Assembly Code:**
+   Save the provided assembly code in a file with the appropriate extension, such as `your_program.asm`.
+
+2. **Create a Makefile:**
+   Include a Makefile to automate the compilation process. Here's a simple example:
+
+   ```make
+   all: your_program
+
+   your_program: your_program.asm
+       nasm -f elf64 -o your_program.o your_program.asm
+       gcc -no-pie -o your_program your_program.o
+
+   clean:
+       rm -f your_program your_program.o
+   ```
+
+   This Makefile assumes the use of NASM for assembly and GCC for linking. Adjust it based on your toolchain.
+
+3. **Build the Executable:**
+   Run the following command in the terminal to build the executable:
+
+   ```bash
+   make
+   ```
+
+   This will assemble and link the code, creating an executable file named `your_program`.
+
+4. **Run the Executable:**
+   Execute the program by running:
+
+   ```bash
+   ./your_program
+   ```
+
+   The program will prompt you to enter your age and name, and it will display the entered values.
+
+### Cleanup
+
+If needed, clean up the generated files using:
+
+```bash
+make clean
+```
+
+This removes the compiled executable and object files.
+
+### Note
+
+- Ensure that the assembly code adheres to the x86-64 architecture and follows the specified requirements.
+- Test the program with various inputs to ensure correct functionality.
+- If issues arise during compilation, review the code and adjust the Makefile accordingly.
+
+Follow these deployment steps to successfully compile, link, and run the x86-64 assembly program on your system.
+
